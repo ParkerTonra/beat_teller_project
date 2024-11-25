@@ -1,0 +1,365 @@
+Training Started: 2024-11-24 21:10:41
+Device: cuda
+Model Parameters: 331394
+Training Samples: 57
+Validation Samples: 7
+Batch Size: 32
+Training Progress:
+--------------------------------------------------------------------------------
+
+Epoch 1/100
+Training Loss: 15939.1440
+Validation Loss: 13783.3135
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13783.3135
+
+Epoch 2/100
+Training Loss: 15812.5371
+Validation Loss: 13781.6455
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13781.6455
+
+Epoch 3/100
+Training Loss: 16041.5762
+Validation Loss: 13780.0117
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13780.0117
+
+Epoch 4/100
+Training Loss: 15893.5054
+Validation Loss: 13778.0449
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13778.0449
+
+Epoch 5/100
+Training Loss: 16048.5308
+Validation Loss: 13775.8105
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.8
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13775.8105
+
+Epoch 6/100
+Training Loss: 16006.0112
+Validation Loss: 13773.0830
+BPM Error - Avg: 112.5, Max: 172.3, Min: 69.8
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13773.0830
+
+Epoch 7/100
+Training Loss: 15966.2783
+Validation Loss: 13769.7695
+BPM Error - Avg: 112.5, Max: 172.2, Min: 69.8
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13769.7695
+
+Epoch 8/100
+Training Loss: 15970.9971
+Validation Loss: 13765.0811
+BPM Error - Avg: 112.5, Max: 172.2, Min: 69.8
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13765.0811
+
+Epoch 9/100
+Training Loss: 16048.4170
+Validation Loss: 13758.0762
+BPM Error - Avg: 112.4, Max: 172.2, Min: 69.8
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13758.0762
+
+Epoch 10/100
+Training Loss: 15928.8730
+Validation Loss: 13747.6572
+BPM Error - Avg: 112.4, Max: 172.1, Min: 69.7
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13747.6572
+
+Epoch 11/100
+Training Loss: 15978.4102
+Validation Loss: 13730.7285
+BPM Error - Avg: 112.3, Max: 172.1, Min: 69.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13730.7285
+
+Epoch 12/100
+Training Loss: 15739.6963
+Validation Loss: 13703.8652
+BPM Error - Avg: 112.2, Max: 171.9, Min: 69.5
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13703.8652
+
+Epoch 13/100
+Training Loss: 15827.5039
+Validation Loss: 13664.5498
+BPM Error - Avg: 112.0, Max: 171.8, Min: 69.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13664.5498
+
+Epoch 14/100
+Training Loss: 15893.9038
+Validation Loss: 13609.5146
+BPM Error - Avg: 111.8, Max: 171.5, Min: 69.1
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13609.5146
+
+Epoch 15/100
+Training Loss: 15783.0664
+Validation Loss: 13537.3799
+BPM Error - Avg: 111.5, Max: 171.2, Min: 68.7
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13537.3799
+
+Epoch 16/100
+Training Loss: 15606.3779
+Validation Loss: 13445.9707
+BPM Error - Avg: 111.0, Max: 170.7, Min: 68.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13445.9707
+
+Epoch 17/100
+Training Loss: 15563.5405
+Validation Loss: 13339.4199
+BPM Error - Avg: 110.6, Max: 170.2, Min: 67.7
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13339.4199
+
+Epoch 18/100
+Training Loss: 15418.5630
+Validation Loss: 13218.8818
+BPM Error - Avg: 110.0, Max: 169.6, Min: 67.1
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13218.8818
+
+Epoch 19/100
+Training Loss: 15333.0591
+Validation Loss: 13083.5762
+BPM Error - Avg: 109.4, Max: 168.8, Min: 66.4
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 13083.5762
+
+Epoch 20/100
+Training Loss: 15304.7617
+Validation Loss: 12933.6602
+BPM Error - Avg: 108.7, Max: 168.1, Min: 65.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 12933.6602
+
+Epoch 21/100
+Training Loss: 15008.6729
+Validation Loss: 12765.5869
+BPM Error - Avg: 108.0, Max: 167.2, Min: 64.7
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 12765.5869
+
+Epoch 22/100
+Training Loss: 14706.9385
+Validation Loss: 12577.4971
+BPM Error - Avg: 107.1, Max: 166.1, Min: 63.7
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 12577.4971
+
+Epoch 23/100
+Training Loss: 14735.6763
+Validation Loss: 12367.9951
+BPM Error - Avg: 106.2, Max: 165.0, Min: 62.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 12367.9951
+
+Epoch 24/100
+Training Loss: 14384.4253
+Validation Loss: 12136.5967
+BPM Error - Avg: 105.1, Max: 163.7, Min: 61.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 12136.5967
+
+Epoch 25/100
+Training Loss: 14018.0864
+Validation Loss: 11882.5439
+BPM Error - Avg: 103.9, Max: 162.3, Min: 59.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 11882.5439
+
+Epoch 26/100
+Training Loss: 13648.8037
+Validation Loss: 11605.4199
+BPM Error - Avg: 102.6, Max: 160.7, Min: 58.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 11605.4199
+
+Epoch 27/100
+Training Loss: 13718.8428
+Validation Loss: 11304.3682
+BPM Error - Avg: 101.1, Max: 158.9, Min: 56.5
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 11304.3682
+
+Epoch 28/100
+Training Loss: 12956.1001
+Validation Loss: 10978.9805
+BPM Error - Avg: 99.5, Max: 157.0, Min: 54.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 10978.9805
+
+Epoch 29/100
+Training Loss: 12676.8052
+Validation Loss: 10628.7295
+BPM Error - Avg: 97.8, Max: 154.9, Min: 52.5
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 10628.7295
+
+Epoch 30/100
+Training Loss: 12518.4487
+Validation Loss: 10253.7617
+BPM Error - Avg: 95.8, Max: 152.6, Min: 50.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 10253.7617
+
+Epoch 31/100
+Training Loss: 12548.3643
+Validation Loss: 9850.6836
+BPM Error - Avg: 93.7, Max: 150.1, Min: 47.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 9850.6836
+
+Epoch 32/100
+Training Loss: 11448.5913
+Validation Loss: 9422.3789
+BPM Error - Avg: 91.5, Max: 147.3, Min: 44.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 9422.3789
+
+Epoch 33/100
+Training Loss: 11342.1812
+Validation Loss: 8970.4814
+BPM Error - Avg: 89.0, Max: 144.3, Min: 41.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 8970.4814
+
+Epoch 34/100
+Training Loss: 10848.0757
+Validation Loss: 8495.2861
+BPM Error - Avg: 86.3, Max: 141.0, Min: 38.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 8495.2861
+
+Epoch 35/100
+Training Loss: 9528.2700
+Validation Loss: 7999.0562
+BPM Error - Avg: 83.4, Max: 137.5, Min: 35.1
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 7999.0562
+
+Epoch 36/100
+Training Loss: 9338.3257
+Validation Loss: 7483.8296
+BPM Error - Avg: 80.3, Max: 133.7, Min: 31.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 7483.8296
+
+Epoch 37/100
+Training Loss: 9208.9209
+Validation Loss: 6951.7046
+BPM Error - Avg: 76.9, Max: 129.6, Min: 27.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 6951.7046
+
+Epoch 38/100
+Training Loss: 8302.7603
+Validation Loss: 6403.4253
+BPM Error - Avg: 73.3, Max: 125.3, Min: 22.9
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 6403.4253
+
+Epoch 39/100
+Training Loss: 7777.8022
+Validation Loss: 5846.3184
+BPM Error - Avg: 69.4, Max: 120.7, Min: 18.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 5846.3184
+
+Epoch 40/100
+Training Loss: 6757.1099
+Validation Loss: 5284.3896
+BPM Error - Avg: 65.3, Max: 115.8, Min: 13.3
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 5284.3896
+
+Epoch 41/100
+Training Loss: 6657.9829
+Validation Loss: 4722.8110
+BPM Error - Avg: 60.8, Max: 110.6, Min: 8.1
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 4722.8110
+
+Epoch 42/100
+Training Loss: 5956.6694
+Validation Loss: 4169.8140
+BPM Error - Avg: 56.1, Max: 105.0, Min: 2.6
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 4169.8140
+
+Epoch 43/100
+Training Loss: 5666.8723
+Validation Loss: 3630.3838
+BPM Error - Avg: 51.5, Max: 99.2, Min: 3.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 3630.3838
+
+Epoch 44/100
+Training Loss: 4822.0322
+Validation Loss: 3110.9985
+BPM Error - Avg: 46.9, Max: 93.1, Min: 4.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 3110.9985
+
+Epoch 45/100
+Training Loss: 4305.7471
+Validation Loss: 2625.7964
+BPM Error - Avg: 42.4, Max: 86.7, Min: 2.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 2625.7964
+
+Epoch 46/100
+Training Loss: 3759.7863
+Validation Loss: 2182.6306
+BPM Error - Avg: 38.2, Max: 80.1, Min: 3.5
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 2182.6306
+
+Epoch 47/100
+Training Loss: 3386.8099
+Validation Loss: 1795.7970
+BPM Error - Avg: 34.3, Max: 73.2, Min: 3.4
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 1795.7970
+
+Epoch 48/100
+Training Loss: 2746.4541
+Validation Loss: 1476.6605
+BPM Error - Avg: 30.7, Max: 66.0, Min: 5.5
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 1476.6605
+
+Epoch 49/100
+Training Loss: 2495.5796
+Validation Loss: 1239.8477
+BPM Error - Avg: 27.0, Max: 58.9, Min: 1.2
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 1239.8477
+
+Epoch 50/100
+Training Loss: 1945.6163
+Validation Loss: 1096.2399
+BPM Error - Avg: 26.0, Max: 51.7, Min: 3.1
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 1096.2399
+
+Epoch 51/100
+Training Loss: 2457.9877
+Validation Loss: 1050.0553
+BPM Error - Avg: 27.3, Max: 57.5, Min: 2.4
+Learning Rate: 3.00e-04, Gradient Norm: 1.41e+00
+New best model saved! Validation Loss: 1050.0553

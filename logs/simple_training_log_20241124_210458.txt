@@ -1,0 +1,8 @@
+Training Started: 2024-11-24 21:04:58
+Device: cuda
+Model Parameters: 32034
+Training Samples: 57
+Validation Samples: 7
+Batch Size: 32
+Training Progress:
+--------------------------------------------------------------------------------

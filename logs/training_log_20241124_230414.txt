@@ -1,0 +1,10 @@
+Training Started: 2024-11-24 23:04:14
+Device: cuda
+GPU: NVIDIA GeForce GTX 1080 Ti
+Initial Learning Rate: 0.0005
+Number of Epochs: 25
+Training Samples: 57
+Validation Samples: 7
+
+Training Progress:
+--------------------------------------------------------------------------------

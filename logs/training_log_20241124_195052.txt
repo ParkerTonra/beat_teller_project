@@ -1,0 +1,226 @@
+Training Started: 2024-11-24 19:50:52
+Device: cuda
+GPU: NVIDIA GeForce GTX 1080 Ti
+Initial Learning Rate: 0.001
+Number of Epochs: 25
+Training Samples: 57
+Validation Samples: 7
+
+Training Progress:
+--------------------------------------------------------------------------------
+
+Epoch 1/25
+Training Loss: 16139.2437
+Validation Loss: 13759.5879
+Average BPM Error: 112.4
+Max BPM Error: 172.3
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13759.5879
+
+Epoch 2/25
+Training Loss: 16031.2490
+Validation Loss: 13753.5322
+Average BPM Error: 112.4
+Max BPM Error: 172.2
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13753.5322
+
+Epoch 3/25
+Training Loss: 15956.3877
+Validation Loss: 13744.9229
+Average BPM Error: 112.4
+Max BPM Error: 172.2
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13744.9229
+
+Epoch 4/25
+Training Loss: 16053.1357
+Validation Loss: 13721.7686
+Average BPM Error: 112.3
+Max BPM Error: 172.1
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13721.7686
+
+Epoch 5/25
+Training Loss: 15764.4531
+Validation Loss: 13638.5107
+Average BPM Error: 111.9
+Max BPM Error: 171.8
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13638.5107
+
+Epoch 6/25
+Training Loss: 15655.6753
+Validation Loss: 13426.6279
+Average BPM Error: 110.9
+Max BPM Error: 170.9
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13426.6279
+
+Epoch 7/25
+Training Loss: 15401.9629
+Validation Loss: 13065.4668
+Average BPM Error: 109.3
+Max BPM Error: 169.3
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 13065.4668
+
+Epoch 8/25
+Training Loss: 15077.1611
+Validation Loss: 12591.2412
+Average BPM Error: 107.1
+Max BPM Error: 167.2
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 12591.2412
+
+Epoch 9/25
+Training Loss: 14564.0654
+Validation Loss: 11894.4736
+Average BPM Error: 103.8
+Max BPM Error: 164.1
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 11894.4736
+
+Epoch 10/25
+Training Loss: 13788.1377
+Validation Loss: 10919.4658
+Average BPM Error: 98.9
+Max BPM Error: 159.5
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 10919.4658
+
+Epoch 11/25
+Training Loss: 12348.6636
+Validation Loss: 9613.8545
+Average BPM Error: 92.0
+Max BPM Error: 153.0
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 9613.8545
+
+Epoch 12/25
+Training Loss: 10897.0020
+Validation Loss: 7932.2622
+Average BPM Error: 82.3
+Max BPM Error: 143.8
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 7932.2622
+
+Epoch 13/25
+Training Loss: 9081.3940
+Validation Loss: 5902.8833
+Average BPM Error: 68.8
+Max BPM Error: 131.0
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 5902.8833
+
+Epoch 14/25
+Training Loss: 6993.3059
+Validation Loss: 3718.2637
+Average BPM Error: 50.2
+Max BPM Error: 113.5
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 3718.2637
+
+Epoch 15/25
+Training Loss: 4706.5298
+Validation Loss: 1880.5973
+Average BPM Error: 30.4
+Max BPM Error: 90.0
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 1880.5973
+
+Epoch 16/25
+Training Loss: 2953.0992
+Validation Loss: 1276.7235
+Average BPM Error: 32.3
+Max BPM Error: 61.4
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 1276.7235
+
+Epoch 17/25
+Training Loss: 3740.9354
+Validation Loss: 1913.3307
+Average BPM Error: 38.5
+Max BPM Error: 63.5
+Learning Rate: 0.001
+
+Epoch 18/25
+Training Loss: 5489.8066
+Validation Loss: 1736.5277
+Average BPM Error: 36.5
+Max BPM Error: 63.4
+Learning Rate: 0.001
+
+Epoch 19/25
+Training Loss: 5370.4194
+Validation Loss: 1215.6111
+Average BPM Error: 32.0
+Max BPM Error: 51.8
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 1215.6111
+
+Epoch 20/25
+Training Loss: 4112.0405
+Validation Loss: 1147.3737
+Average BPM Error: 29.0
+Max BPM Error: 65.6
+Learning Rate: 0.001
+
+New best model saved! Validation Loss: 1147.3737
+
+Epoch 21/25
+Training Loss: 3405.8501
+Validation Loss: 1390.2152
+Average BPM Error: 27.4
+Max BPM Error: 75.6
+Learning Rate: 0.001
+
+Epoch 22/25
+Training Loss: 3661.6256
+Validation Loss: 1667.0101
+Average BPM Error: 28.7
+Max BPM Error: 81.6
+Learning Rate: 0.001
+
+Epoch 23/25
+Training Loss: 3500.9249
+Validation Loss: 1797.3253
+Average BPM Error: 30.4
+Max BPM Error: 83.7
+Learning Rate: 0.001
+
+Epoch 24/25
+Training Loss: 3908.7526
+Validation Loss: 1724.3854
+Average BPM Error: 29.8
+Max BPM Error: 81.8
+Learning Rate: 0.001
+
+Epoch 25/25
+Training Loss: 3416.7030
+Validation Loss: 1552.5548
+Average BPM Error: 27.9
+Max BPM Error: 77.8
+Learning Rate: 0.001
+
+================================================================================
+Training Completed: 2024-11-24 20:02:15
+Best Validation Loss: 1147.3737
+Final Average BPM Error: 27.9
