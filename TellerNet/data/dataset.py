@@ -5,6 +5,7 @@ import librosa
 import torch
 from torch.utils.data import Dataset
 import re
+from tinytag import TinyTag
 
 
 class RekordboxAudioDataset(Dataset):
@@ -28,9 +29,9 @@ class RekordboxAudioDataset(Dataset):
                         # Get true tempo from filename
                         true_tempo = float(match.group(1))
                         audio_path = os.path.join(audio_dir, filename)
-                        
+                        tag = TinyTag.get(audio_path)
                         # Load audio file
-                        duration = librosa.get_duration(path=audio_path)
+                        duration = tag.duration
                         offset = duration / 3 if duration else 0
                         y, sr = librosa.load(audio_path, offset=offset, duration=30)
                         
