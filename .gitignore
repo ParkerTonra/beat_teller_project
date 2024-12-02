@@ -8,3 +8,5 @@
 /.venv
 /models/saved
 /venv
+*.png
+*.pth
