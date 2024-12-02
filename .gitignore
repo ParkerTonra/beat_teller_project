@@ -6,3 +6,5 @@
 /TellerNet/data/beatbank_test_audios.zip
 /FriendlyBeatTeller.ipynb
 /.venv
+/models/saved
+/venv
