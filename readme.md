@@ -25,4 +25,4 @@ flask run
 ## Usage
 
 To analyze an audio file, simply upload it to the application. The application will analyze the audio file and provide a tempo estimate in BPM.
-```
+
