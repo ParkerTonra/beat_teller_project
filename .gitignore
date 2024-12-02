@@ -10,3 +10,4 @@
 /venv
 *.png
 *.pth
+!static/teller_net_20241201_173629_best.pth
