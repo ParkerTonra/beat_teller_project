@@ -1,0 +1,1 @@
+{"audio_dir": "TellerNet/data/beatbank_test_audios", "feature_params": {"hop_length": 512, "win_length": 384, "n_tempogram_bands": 4}}
