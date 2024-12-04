@@ -6,218 +6,99 @@ import torchaudio
 import librosa
 import numpy as np
 from tinytag import TinyTag
+from TellerNet.models.teller_net import TellerNet
 
-app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+# [Previous TellerNet class definition remains the same]
 
-class TellerNet(nn.Module):
-    def __init__(self):
-        super(TellerNet, self).__init__()
+class WebInference:
+    def __init__(self, models, target_length=1292):
+        self.models = models
+        self.target_length = target_length
         
-        self.freq_convs = nn.Sequential(
-            nn.Conv2d(34, 64, kernel_size=(3,3), padding=(1,1)),
-            nn.BatchNorm2d(64),
-            nn.LeakyReLU(0.2),
-            
-            nn.Conv2d(64, 128, kernel_size=(3,3), padding=(1,1)),
-            nn.BatchNorm2d(128),
-            nn.LeakyReLU(0.2),
-            
-            nn.Conv2d(128, 64, kernel_size=(3,3), padding=(1,1)),
-            nn.BatchNorm2d(64),
-            nn.LeakyReLU(0.2)
-        )
-        
-        self.attention = nn.Sequential(
-            nn.Conv2d(64, 1, kernel_size=1),
-            nn.Sigmoid()
-        )
-        
-        self.lstm = nn.LSTM(
-            input_size=64,
-            hidden_size=64,
-            num_layers=2,
-            batch_first=True,
-            bidirectional=True,
-            dropout=0.2
-        )
-        
-        self.regression_head = nn.Sequential(
-            nn.Linear(128, 64),
-            nn.LayerNorm(64),
-            nn.LeakyReLU(0.2),
-            nn.Dropout(0.3),
-            
-            nn.Linear(64, 32),
-            nn.LayerNorm(32),
-            nn.LeakyReLU(0.2),
-            
-            nn.Linear(32, 1)
-        )
-        
-        self.tempo_scaling = nn.Parameter(torch.ones(1))
-    
-    def forward(self, x):
-        batch_size = x.size(0)
-        x = x.view(batch_size, 34, 1, -1)
-        
-        conv_out = self.freq_convs(x)
-        attention_weights = self.attention(conv_out)
-        attended_features = conv_out * attention_weights
-        
-        lstm_input = attended_features.permute(0, 2, 3, 1)
-        lstm_input = lstm_input.contiguous().view(batch_size, -1, 64)
-        
-        lstm_out, _ = self.lstm(lstm_input)
-        pooled = torch.mean(lstm_out, dim=1)
-        output = self.regression_head(pooled)
-        output = output * self.tempo_scaling
-        
-        return output
-
-# Load the model at startup
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = TellerNet()
-
-# Load the complete checkpoint
-checkpoint = torch.load('static/teller_net_20241201_173629_best.pth', map_location=device)
-
-# Extract just the model state dict from the checkpoint
-model.load_state_dict(checkpoint['model_state_dict'])
-model.to(device)
-model.eval()
-
-def process_audio(audio_path):
-    """Process audio file using the same preprocessing as training"""
-    try:
-        # Load audio with same parameters as training
-        tag = TinyTag.get(audio_path)
-        offset = tag.duration / 3 if tag.duration else 0
-        y, sr = librosa.load(audio_path, offset=offset, duration=30)
-        
-        # Get initial tempo estimate from librosa
-        tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
-        librosa_tempo = float(tempo.item())
-        
-        # Normalize tempo to 78-155 range
+    def normalize_tempo(self, librosa_tempo, true_tempo=120):
         while librosa_tempo < 78:
             librosa_tempo *= 2
         while librosa_tempo > 155:
             librosa_tempo /= 2
-            
-        # Extract features
-        features = extract_features(y, sr)
-        
-        # Convert to tensor and add batch dimension
-        features = torch.FloatTensor(features)
-        
-        # Add librosa tempo information
-        librosa_tempo_norm = (librosa_tempo - 78) / 77
-        tempo_channel = torch.tensor([[librosa_tempo_norm] * features.shape[1]])
-        
-        # Calculate tempo confidence
-        confidence_input = torch.tensor(-min(
-            abs(librosa_tempo - 120),
-            abs(librosa_tempo - 128),
-            abs(librosa_tempo - 140)
-        ) / 20.0)
-        tempo_confidence = torch.exp(confidence_input)
-        tempo_confidence = tempo_confidence.view(1, -1).expand(1, features.shape[1])
-        
-        # Concatenate all features
-        features = torch.cat([
-            tempo_channel,
-            tempo_confidence,
-            features
-        ], dim=0)
-        
-        # Add batch dimension
-        features = features.unsqueeze(0)
-        
-        return features
-        
-    except Exception as e:
-        print(f"Error processing audio: {str(e)}")
-        raise
+        return librosa_tempo
 
-def extract_features(y, sr):
-    """Extract audio features matching training preprocessing"""
-    # Fixed parameters
-    hop_length = 512
-    n_fft = 1024
-    
-    # Ensure audio length is consistent
-    target_length = 30 * sr
-    if len(y) > target_length:
-        y = y[:target_length]
-    elif len(y) < target_length:
-        y = np.pad(y, (0, target_length - len(y)))
-    
-    # Core rhythm features
-    onset_env = librosa.onset.onset_strength(
-        y=y, 
-        sr=sr,
-        hop_length=hop_length
-    )
-    onset_env = librosa.util.normalize(onset_env)
-    
-    # Beat tracking with two different configurations
-    tempo1, beats1 = librosa.beat.beat_track(
-        y=y, sr=sr, 
-        hop_length=hop_length, 
-        start_bpm=120, 
-        tightness=100
-    )
-    
-    tempo2, beats2 = librosa.beat.beat_track(
-        y=y, sr=sr, 
-        hop_length=hop_length, 
-        start_bpm=140, 
-        tightness=50
-    )
-    
-    # Convert beats to onset envelopes
-    beat_env1 = np.zeros(len(onset_env))
-    beat_env2 = np.zeros(len(onset_env))
-    beat_frames1 = beats1[beats1 < len(beat_env1)]
-    beat_frames2 = beats2[beats2 < len(beat_env2)]
-    beat_env1[beat_frames1] = 1.0
-    beat_env2[beat_frames2] = 1.0
-    
-    # Compute reduced tempogram
-    tempogram = librosa.feature.tempogram(
-        onset_envelope=onset_env,
-        sr=sr,
-        hop_length=hop_length,
-        win_length=384
-    )
-    
-    # Reduce to fewer bands
-    n_bands = 29
-    tempogram_reduced = np.zeros((n_bands, tempogram.shape[1]))
-    band_size = tempogram.shape[0] // n_bands
-    for i in range(n_bands):
-        start_idx = i * band_size
-        end_idx = (i + 1) * band_size
-        tempogram_reduced[i] = np.mean(tempogram[start_idx:end_idx], axis=0)
-    
-    tempo1_norm = (tempo1 - 78) / 77
-    tempo2_norm = (tempo2 - 78) / 77
-    
-    # Stack features
-    features = np.vstack([
-        onset_env.reshape(1, -1),      # 1 band
-        beat_env1.reshape(1, -1),      # 1 band
-        beat_env2.reshape(1, -1),      # 1 band
-        np.full((1, onset_env.shape[0]), tempo1_norm),  # Additional tempo feature
-        np.full((1, onset_env.shape[0]), tempo2_norm),  # Additional tempo feature
-        tempogram_reduced              # 29 bands
-    ])
-    
-    # Normalize
-    features = (features - features.mean()) / (features.std() + 1e-8)
-    
-    return features
+    def extract_features(self, audio_path):
+        try:
+            # Load audio with same parameters as training
+            tag = TinyTag.get(audio_path)
+            offset = tag.duration / 3 if tag.duration else 0
+            y, sr = librosa.load(audio_path, offset=offset, duration=30)
+            
+            # Use librosa to estimate initial tempo
+            onset_env = librosa.onset.onset_strength(y=y, sr=sr)
+            tempo_librosa, _ = librosa.beat.beat_track(onset_envelope=onset_env, sr=sr)
+            
+            # Normalize the estimated tempo
+            tempo_librosa = self.normalize_tempo(tempo_librosa)
+            
+            # Normalize librosa estimated tempo to [0,1]
+            tempo_librosa_norm = (tempo_librosa - 78) / 77
+            
+            # Compute MFCCs
+            mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+            mfccs = librosa.util.fix_length(mfccs, size=self.target_length)
+            
+            # Compute spectral centroid
+            spectral_centroid = librosa.feature.spectral_centroid(y=y, sr=sr)
+            spectral_centroid = librosa.util.fix_length(spectral_centroid, size=self.target_length)
+            
+            # Normalize features
+            mfccs = (mfccs - np.mean(mfccs, axis=1, keepdims=True)) / (np.std(mfccs, axis=1, keepdims=True) + 1e-8)
+            spectral_centroid = (spectral_centroid - np.mean(spectral_centroid)) / (np.std(spectral_centroid) + 1e-8)
+            
+            # Stack features
+            tempo_feature = np.full((1, self.target_length), tempo_librosa_norm)
+            features = np.vstack([tempo_feature, mfccs, spectral_centroid])
+            
+            return torch.FloatTensor(features)
+            
+        except Exception as e:
+            print(f"Error extracting features: {str(e)}")
+            return None
+
+    def predict(self, features):
+        features = features.to(next(self.models[0].parameters()).device)
+        features = features.permute(0, 1, 2)  # Adjust dimensions for model
+        
+        all_predictions = []
+        with torch.no_grad():
+            for model in self.models:
+                prediction = model(features)
+                pred_bpm = prediction.item() * 77 + 78
+                all_predictions.append(pred_bpm)
+        
+        # Get median prediction
+        median_bpm = np.median(all_predictions)
+        return median_bpm
+
+app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+
+# Load models at startup
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model_paths = [
+    'pths/model_fold1_20241203_140536.pth',
+    'pths/model_fold2_20241203_140553.pth',
+    'pths/model_fold3_20241203_140611.pth',
+    'pths/model_fold4_20241203_140633.pth',
+    'pths/model_fold5_20241203_140716.pth',
+]
+
+ensemble_models = []
+for path in model_paths:
+    model = TellerNet()
+    model.to(device)
+    model.load_state_dict(torch.load(path, map_location=device, weights_only=False))
+    model.eval()
+    ensemble_models.append(model)
+
+# Create inference instance
+inference = WebInference(ensemble_models)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -236,16 +117,16 @@ def upload_file():
             file.save(temp_path)
             
             try:
-                # Process the audio file
-                features = process_audio(temp_path)
-                features = features.to(device)
+                # Extract features
+                features = inference.extract_features(temp_path)
+                if features is None:
+                    raise ValueError("Failed to extract features from audio file")
                 
-                # Make prediction
-                with torch.no_grad():
-                    prediction = model(features)
+                # Add batch dimension
+                features = features.unsqueeze(0)
                 
-                # Denormalize the prediction back to BPM
-                tempo = (prediction.item() * 77) + 78
+                # Get prediction
+                tempo = inference.predict(features)
                 
                 # Clean up
                 os.remove(temp_path)
@@ -255,9 +136,10 @@ def upload_file():
             except Exception as e:
                 if os.path.exists(temp_path):
                     os.remove(temp_path)
-                print(f"Error processing file: {str(e)}")  # Add logging
+                print(f"Error processing file: {str(e)}")
                 return jsonify({'error': str(e)})
                 
     return render_template('index.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

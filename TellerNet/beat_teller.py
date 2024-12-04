@@ -7,7 +7,7 @@ from utils.data_validate import validate_dataset
 
 if __name__ == "__main__":
     # Define your audio directory
-    audio_dir = "TellerNet/data/beatbank_test_audios"
+    audio_dir = "TellerNet/data/beatbank_train_audios"
     
     # Validate dataset first
     if not validate_dataset(audio_dir):

@@ -1,9 +1,9 @@
 /giantsteps-tempo-dataset
 /TellerNet/data/__pycache__
-/TellerNet/data/beatbank_test_audios
+/TellerNet/data/beatbank_train_audios
 /TellerNet/giantsteps-tempo-dataset
 /TellerNet/data/giantsteps-tempo-dataset
-/TellerNet/data/beatbank_test_audios.zip
+/TellerNet/data/beatbank_train_audios.zip
 /FriendlyBeatTeller.ipynb
 /.venv
 /models/saved
@@ -11,3 +11,6 @@
 *.png
 *.pth
 !static/teller_net_20241201_173629_best.pth
+/plots
+/pths
+/TellerNet/data/beatbank_inf_audios
